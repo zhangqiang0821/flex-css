@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>flex布局</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        display: flex;
+      }
+      [class$='face'] {
+        display: flex;
+        margin: 16px;
+        padding: 4px;
+        background-color: #e7e7e7;
+        width: 104px;
+        height: 104px;
+        box-shadow: inset 0 5px white, inset 0 -5px #bbb, inset 5px 0 #d7d7d7, inset -5px 0 #d7d7d7;
+        border-radius: 10%;
+        object-fit: contain;
+      }
+      .pip {
+        width: 24px;
+        height: 24px;
+        /* 设置圆角 */
+        border-radius: 50%;
+        /* 设置阴影 */
+        box-shadow: inset 0 3px #111, inset 0 -3px #555;
+        background-color: #333;
+        color: white;
+        text-align: center;
+      }
+      /* 1、 处理第一个让他中部居中 */
+      .first-face {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      /* 2、  第二个让两个项目一个角一个*/
+      .second-face {
+        display: flex;
+        justify-content: space-between;
+      }
+      /* 再让第二个项目出现在交叉轴结束处 */
+      .second-face > .pip:nth-of-type(2) {
+        align-self: flex-end;
+      }
+      /* 3、 现在处理第三个 */
+      .third-face {
+        display: flex;
+        justify-content: space-between;
+      }
+      /* 再把第二个拉到居中位置 */
+      .third-face > .pip:nth-of-type(2) {
+        align-self: center;
+      }
+      /* 让第三个也使用不一样的对齐方式,仍然使用align-self */
+      .third-face > .pip:nth-of-type(3) {
+        align-self: flex-end;
+      }
+      /* 4、 现在处理第四个时出现了列的概念每个列是单独盒子 */
+      .fourth-face {
+        /* 让fourth-face做个一个大盒子两端对齐 */
+        display: flex;
+        justify-content: space-between;
+      }
+      .fourth-face > .column {
+        /* 把列的小盒子中方向改为列显示 */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      /* 5、 第五个用的是三列了 */
+      .fivth-face {
+        justify-content: space-between;
+      }
+      .fivth-face > .column {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .fivth-face > .column:nth-of-type(2) {
+        align-self: center;
+      }
+      /* 6、 第六个用两列就可以了 */
+      .sixth-face {
+        display: flex;
+        justify-content: space-between;
+      }
+      .sixth-face > .column {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="first-face">
+      <div class="pip">1</div>
+    </div>
+    <div class="second-face">
+      <div class="pip">1</div>
+      <div class="pip">2</div>
+    </div>
+    <div class="third-face">
+      <div class="pip">1</div>
+      <div class="pip">2</div>
+      <div class="pip">3</div>
+    </div>
+    <div class="fourth-face">
+      <div class="column">
+        <div class="pip">1</div>
+        <div class="pip">2</div>
+      </div>
+      <div class="column">
+        <div class="pip">3</div>
+        <div class="pip">4</div>
+      </div>
+    </div>
+    <div class="fivth-face">
+      <div class="column">
+        <div class="pip">1</div>
+        <div class="pip">2</div>
+      </div>
+      <div class="column">
+        <div class="pip">3</div>
+      </div>
+      <div class="column">
+        <div class="pip">4</div>
+        <div class="pip">5</div>
+      </div>
+    </div>
+    <div class="sixth-face">
+      <div class="column">
+        <div class="pip">1</div>
+        <div class="pip">2</div>
+        <div class="pip">3</div>
+      </div>
+      <div class="column">
+        <div class="pip">4</div>
+        <div class="pip">5</div>
+        <div class="pip">6</div>
+      </div>
+    </div>
+  </body>
+</html>
